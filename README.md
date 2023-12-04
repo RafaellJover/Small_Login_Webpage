@@ -1,2 +1,2 @@
 # Small_Login_Webpage
-this is a small HTMl login page that user JS to validate user input 
+this is a simple HTML login page that uses JS to validate user input 
