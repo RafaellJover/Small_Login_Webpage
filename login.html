@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>My Login Example</title>
+        <script>
+            function verifyPass(){
+
+                var error = document.getElementById("errors");
+                //get password input
+                var password = document.getElementById("password");
+                
+                document.getElementById("passwordMessage").style.color="red";
+
+                if(password.value.length <= 7){
+
+                    //modify passwordMessage
+                    document.getElementById("passwordMessage").innerHTML = 
+                    "Your password must be greater than 7 characters.";
+                    
+                    //modify error  to true, (we have errors)
+                    error.value = "true";
+
+                } else {
+                    document.getElementById("passwordMessage").innerHTML = 
+                    "";
+
+                    error.value = "false";
+                }
+            }
+
+            function checkInputs(){
+                var errorValue = document.getElementById("errors").value;
+                if (errorValue == "true"){//we have errors
+                    alert("Errors in your webpage, please correct before pressing submit.")
+                    return false;
+                } 
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <form id="myForm" action="" method="">
+            <p>
+                <label for="email">E-mail:</label>
+                <input type="email" id ="email" placeholder="Enter e-mail address" name=email
+                pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/" required>
+            </p>
+            <!-- could use </br> instead of paragraphs here, basically gives a break/space between the fields-->
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" id = "password" name="password" placeholder="Enter password"
+                onblur="verifyPass()">
+            </p>
+            <p id="passwordMessage"></p>
+            <input type="submit" value="submit" onclick="return checkInputs();">
+            <input type="hidden" id="errors" name="errors" value="false" onblur="verifyPass()">
+        </form>
+    </body>
+</html>
